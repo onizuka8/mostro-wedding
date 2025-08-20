@@ -70,46 +70,25 @@ const games = [
 
 // DOM elements
 const gamesGrid = document.getElementById('gamesGrid');
-const videoModal = document.getElementById('videoModal');
-const closeModal = document.getElementById('closeModal');
-const videoFrame = document.getElementById('videoFrame');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
 
 // Load games on page load
 document.addEventListener('DOMContentLoaded', function () {
     loadGames();
-    setupModalEvents();
 
-    // Check for URL parameters to open a specific game
+    // Check for URL parameters to redirect to tutorial page
     checkUrlParameters();
 });
 
-// Function to check URL parameters and open specific game
+// Function to check URL parameters and redirect to tutorial page
 function checkUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('game');
     const gameSlug = urlParams.get('slug');
 
-    if (gameId) {
-        // Find game by ID
-        const game = games.find(g => g.id == gameId);
-        if (game) {
-            // Small delay to ensure page is loaded
-            setTimeout(() => {
-                openVideoModal(game);
-            }, 500);
-        }
-    } else if (gameSlug) {
-        // Find game by slug (URL-friendly title)
-        const game = games.find(g =>
-            g.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === gameSlug.toLowerCase()
-        );
-        if (game) {
-            setTimeout(() => {
-                openVideoModal(game);
-            }, 500);
-        }
+    if (gameId || gameSlug) {
+        // Redirect to tutorial page with the same parameters
+        const tutorialUrl = `tutorial.html?${window.location.search}`;
+        window.location.href = tutorialUrl;
     }
 }
 
@@ -127,7 +106,7 @@ function loadGames() {
 function createGameCard(game) {
     const card = document.createElement('div');
     card.className = 'game-card';
-    card.onclick = () => openVideoModal(game);
+    card.onclick = () => goToTutorial(game);
 
     card.innerHTML = `
         <div class="game-image">
@@ -147,7 +126,7 @@ function createGameCard(game) {
             <div class="game-category">
                 <span class="category-tag">${game.category}</span>
             </div>
-            <button class="play-button" onclick="event.stopPropagation(); openVideoModal(${JSON.stringify(game).replace(/"/g, '&quot;')})">
+            <button class="play-button" onclick="event.stopPropagation(); goToTutorial(${JSON.stringify(game).replace(/"/g, '&quot;')})">
                 <i class="fas fa-play"></i>
                 Watch Tutorial
             </button>
@@ -157,59 +136,14 @@ function createGameCard(game) {
     return card;
 }
 
-// Function to open video modal
-function openVideoModal(game) {
-    // Convert YouTube URL to embed format if needed
-    let embedUrl = game.youtubeUrl;
-    if (embedUrl.includes('youtube.com/watch')) {
-        const videoId = embedUrl.split('v=')[1];
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
-    }
-
-    videoFrame.src = embedUrl;
-    modalTitle.textContent = game.title;
-    modalDescription.textContent = game.description;
-    videoModal.style.display = 'block';
-
-    // Update URL to include game parameter (without reloading page)
+// Function to navigate to tutorial page
+function goToTutorial(game) {
     const gameSlug = game.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
-    const newUrl = `${window.location.pathname}?game=${game.id}&slug=${gameSlug}`;
-    window.history.pushState({ game: game.id }, '', newUrl);
-
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = 'hidden';
+    const tutorialUrl = `tutorial.html?game=${game.id}&slug=${gameSlug}`;
+    window.location.href = tutorialUrl;
 }
 
-// Function to close video modal
-function closeVideoModal() {
-    videoModal.style.display = 'none';
-    videoFrame.src = ''; // Stop video playback
 
-    // Clean up URL when modal is closed
-    window.history.pushState({}, '', window.location.pathname);
-
-    document.body.style.overflow = 'auto';
-}
-
-// Setup modal event listeners
-function setupModalEvents() {
-    // Close modal when clicking the close button
-    closeModal.addEventListener('click', closeVideoModal);
-
-    // Close modal when clicking outside the modal content
-    videoModal.addEventListener('click', function (event) {
-        if (event.target === videoModal) {
-            closeVideoModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && videoModal.style.display === 'block') {
-            closeVideoModal();
-        }
-    });
-}
 
 // Function to convert YouTube URL to embed URL
 function getYouTubeEmbedUrl(url) {

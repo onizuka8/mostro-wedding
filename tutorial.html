@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tutorial - Loading...</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Tutorial page specific styles */
+        .tutorial-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-3px);
+        }
+
+        .tutorial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .video-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-info {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .meta-item .label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-header {
+                padding: 30px 15px;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .tutorial-content {
+                padding: 0 15px;
+            }
+
+            .game-meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="tutorial-header">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back to Games
+            </button>
+            <h1 id="gameTitle">Loading...</h1>
+            <p id="gameSubtitle">Board Game Tutorial</p>
+        </header>
+
+        <main class="tutorial-content">
+            <section class="video-section">
+                <h2>Watch Tutorial</h2>
+                <div class="video-container">
+                    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="game-info">
+                <h2>About This Game</h2>
+                <p id="gameDescription">Loading...</p>
+
+                <div class="category-badge" id="gameCategory">Loading...</div>
+
+                <div class="game-meta-grid">
+                    <div class="meta-item">
+                        <div class="label">Duration</div>
+                        <div class="value" id="gameDuration">Loading...</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Players</div>
+                        <div class="value" id="gamePlayers">Loading...</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Difficulty</div>
+                        <div class="value" id="gameDifficulty">Loading...</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Category</div>
+                        <div class="value" id="gameCategoryValue">Loading...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Made with ❤️ for our special day</p>
+        </footer>
+    </div>
+
+    <script>
+        // Game data - same as in script.js
+        const games = [
+            {
+                id: 1,
+                title: "Catan",
+                description: "Learn to build settlements, trade resources, and become the dominant force on the island of Catan.",
+                duration: "8 min",
+                difficulty: "Easy",
+                youtubeUrl: "https://www.youtube.com/embed/8Yj0Y3GKE40",
+                image: "images/catan.jpg",
+                players: "3-4",
+                category: "Strategy"
+            },
+            {
+                id: 2,
+                title: "Ticket to Ride",
+                description: "Connect cities across the map by claiming railway routes and completing destination tickets.",
+                duration: "6 min",
+                difficulty: "Easy",
+                youtubeUrl: "https://www.youtube.com/embed/EXAMPLE2",
+                image: "images/ticket-to-ride.jpg",
+                players: "2-5",
+                category: "Family"
+            },
+            {
+                id: 3,
+                title: "Pandemic",
+                description: "Work together as a team to stop the spread of diseases and save humanity.",
+                duration: "10 min",
+                difficulty: "Medium",
+                youtubeUrl: "https://www.youtube.com/embed/EXAMPLE3",
+                image: "images/pandemic.jpg",
+                players: "2-4",
+                category: "Cooperative"
+            },
+            {
+                id: 4,
+                title: "Carcassonne",
+                description: "Build the medieval landscape by placing tiles and claiming features with your meeples.",
+                duration: "7 min",
+                difficulty: "Easy",
+                youtubeUrl: "https://www.youtube.com/embed/EXAMPLE4",
+                image: "images/carcassonne.jpg",
+                players: "2-5",
+                category: "Tile Placement"
+            },
+            {
+                id: 5,
+                title: "Settlers of Catan",
+                description: "A classic strategy game of resource management and trading on the island of Catan.",
+                duration: "9 min",
+                difficulty: "Medium",
+                youtubeUrl: "https://www.youtube.com/embed/EXAMPLE5",
+                image: "images/settlers-catan.jpg",
+                players: "3-4",
+                category: "Strategy"
+            },
+            {
+                id: 6,
+                title: "Pandemic Legacy",
+                description: "An epic campaign where your decisions permanently change the game world.",
+                duration: "12 min",
+                difficulty: "Hard",
+                youtubeUrl: "https://www.youtube.com/embed/EXAMPLE6",
+                image: "images/pandemic-legacy.jpg",
+                players: "2-4",
+                category: "Legacy"
+            }
+        ];
+
+        // Load game data based on URL parameters
+        function loadGameData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('game');
+            const gameSlug = urlParams.get('slug');
+
+            let game = null;
+
+            if (gameId) {
+                game = games.find(g => g.id == gameId);
+            } else if (gameSlug) {
+                game = games.find(g =>
+                    g.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === gameSlug.toLowerCase()
+                );
+            }
+
+            if (game) {
+                // Update page title
+                document.title = `${game.title} Tutorial - Wedding Board Games`;
+
+                // Update header
+                document.getElementById('gameTitle').textContent = game.title;
+
+                // Update video
+                document.getElementById('videoFrame').src = game.youtubeUrl;
+
+                // Update description
+                document.getElementById('gameDescription').textContent = game.description;
+
+                // Update meta information
+                document.getElementById('gameDuration').textContent = game.duration;
+                document.getElementById('gamePlayers').textContent = game.players;
+                document.getElementById('gameDifficulty').textContent = game.difficulty;
+                document.getElementById('gameCategory').textContent = game.category;
+                document.getElementById('gameCategoryValue').textContent = game.category;
+
+            } else {
+                // Game not found
+                document.title = 'Game Not Found - Wedding Board Games';
+                document.getElementById('gameTitle').textContent = 'Game Not Found';
+                document.getElementById('gameDescription').textContent = 'The requested game tutorial could not be found.';
+            }
+        }
+
+        // Go back to main page
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadGameData);
+    </script>
+</body>
+
+</html>
