@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Board Game Tutorials</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="main-title">Wedding Board Game Tutorials</h1>
+                <p class="subtitle">Learn to play our favorite games together</p>
+                <div class="couple-names">
+                    <span class="name">[Groom's Name]</span>
+                    <span class="heart">❤️</span>
+                    <span class="name">[Bride's Name]</span>
+                </div>
+                <p class="wedding-date">[Wedding Date]</p>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="intro">
+                <h2>Welcome to Our Game Collection</h2>
+                <p>We love board games and want to share our passion with you! Scan the QR codes below to watch our
+                    tutorial videos and learn how to play our favorite games.</p>
+            </section>
+
+            <section class="games-grid" id="gamesGrid">
+                <!-- Games will be dynamically loaded here -->
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Made with ❤️ for our special day</p>
+        </footer>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="video-container">
+                <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
