@@ -7,7 +7,9 @@ const games = [
         duration: "8 min",
         difficulty: "Easy",
         youtubeUrl: "https://www.youtube.com/embed/8Yj0Y3GKE40", // Replace with actual YouTube embed URL
-        icon: "🏠"
+        image: "images/catan.jpg",
+        players: "3-4",
+        category: "Strategy"
     },
     {
         id: 2,
@@ -16,7 +18,9 @@ const games = [
         duration: "6 min",
         difficulty: "Easy",
         youtubeUrl: "https://www.youtube.com/embed/EXAMPLE2", // Replace with actual YouTube embed URL
-        icon: "🚂"
+        image: "images/ticket-to-ride.jpg",
+        players: "2-5",
+        category: "Family"
     },
     {
         id: 3,
@@ -25,7 +29,9 @@ const games = [
         duration: "10 min",
         difficulty: "Medium",
         youtubeUrl: "https://www.youtube.com/embed/EXAMPLE3", // Replace with actual YouTube embed URL
-        icon: "🦠"
+        image: "images/pandemic.jpg",
+        players: "2-4",
+        category: "Cooperative"
     },
     {
         id: 4,
@@ -34,7 +40,9 @@ const games = [
         duration: "7 min",
         difficulty: "Easy",
         youtubeUrl: "https://www.youtube.com/embed/EXAMPLE4", // Replace with actual YouTube embed URL
-        icon: "🏰"
+        image: "images/carcassonne.jpg",
+        players: "2-5",
+        category: "Tile Placement"
     },
     {
         id: 5,
@@ -43,7 +51,9 @@ const games = [
         duration: "9 min",
         difficulty: "Medium",
         youtubeUrl: "https://www.youtube.com/embed/EXAMPLE5", // Replace with actual YouTube embed URL
-        icon: "🌾"
+        image: "images/settlers-catan.jpg",
+        players: "3-4",
+        category: "Strategy"
     },
     {
         id: 6,
@@ -52,7 +62,9 @@ const games = [
         duration: "12 min",
         difficulty: "Hard",
         youtubeUrl: "https://www.youtube.com/embed/EXAMPLE6", // Replace with actual YouTube embed URL
-        icon: "📜"
+        image: "images/pandemic-legacy.jpg",
+        players: "2-4",
+        category: "Legacy"
     }
 ];
 
@@ -119,14 +131,21 @@ function createGameCard(game) {
 
     card.innerHTML = `
         <div class="game-image">
-            <span>${game.icon}</span>
+            <img src="${game.image}" alt="${game.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="game-image-fallback" style="display: none;">
+                <span>🎮</span>
+            </div>
         </div>
         <div class="game-content">
             <h3 class="game-title">${game.title}</h3>
             <p class="game-description">${game.description}</p>
             <div class="game-meta">
                 <span>⏱️ ${game.duration}</span>
+                <span>👥 ${game.players} players</span>
                 <span>📊 ${game.difficulty}</span>
+            </div>
+            <div class="game-category">
+                <span class="category-tag">${game.category}</span>
             </div>
             <button class="play-button" onclick="event.stopPropagation(); openVideoModal(${JSON.stringify(game).replace(/"/g, '&quot;')})">
                 <i class="fas fa-play"></i>

@@ -67,21 +67,41 @@ Edit `styles.css` to change:
 - Layout and spacing
 - Animations and effects
 
-### 5. Add Game Images (Optional)
+### 5. Add Game Images (Recommended)
 
-To add actual game images instead of emoji icons:
+The website now uses actual board game images instead of emoji icons! Here's how to add your images:
 
-1. Create an `images` folder
-2. Add your game images
-3. Update the `game-image` div in `createGameCard()` function:
+#### Option A: Use the Image Generator (Easiest)
+1. Open `create-placeholder-images.html` in your browser
+2. Click on any game card to generate a custom image
+3. Download the generated image
+4. Save it in the `images/` folder with the correct filename:
+   - `catan.jpg`
+   - `ticket-to-ride.jpg`
+   - `pandemic.jpg`
+   - `carcassonne.jpg`
+   - `settlers-catan.jpg`
+   - `pandemic-legacy.jpg`
 
-```javascript
-// Replace this line in createGameCard():
-<span>${game.icon}</span>
+#### Option B: Use Real Board Game Photos
+1. Take photos of your actual board games
+2. Crop them to 300x200 pixels (or similar aspect ratio)
+3. Save them in the `images/` folder with the filenames above
+4. Make sure the images are clear and show the game box/board well
 
-// With this:
-<img src="images/${game.image}" alt="${game.title}" style="width: 100%; height: 100%; object-fit: cover;">
-```
+#### Option C: Find Images Online
+1. Search for board game box art (ensure you have rights to use them)
+2. Download and resize to 300x200 pixels
+3. Save in the `images/` folder
+
+#### Fallback System
+If an image fails to load, the website will automatically show a game controller emoji (🎮) as a fallback.
+
+#### Image Requirements:
+- **Format**: JPG or PNG
+- **Size**: 300x200 pixels (or similar aspect ratio)
+- **Quality**: Clear, well-lit images
+- **Content**: Game box art or board setup
 
 ## Direct Game Links & QR Codes
 

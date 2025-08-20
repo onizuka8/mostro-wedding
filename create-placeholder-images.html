@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Game Image Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-card {
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+
+        .catan {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+        }
+
+        .ticket {
+            background: linear-gradient(135deg, #4169E1, #1E90FF);
+        }
+
+        .pandemic {
+            background: linear-gradient(135deg, #DC143C, #FF4500);
+        }
+
+        .carcassonne {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+        }
+
+        .settlers {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+        }
+
+        .legacy {
+            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+        }
+
+        .instructions {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎮 Board Game Image Generator</h1>
+
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Click on any game card below to generate an image</li>
+                <li>Right-click the generated image and "Save image as..."</li>
+                <li>Save with the correct filename in your <code>images/</code> folder</li>
+                <li>Recommended filenames: catan.jpg, ticket-to-ride.jpg, pandemic.jpg, etc.</li>
+            </ol>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <div class="game-card catan" onclick="generateImage('Catan', '#8B4513', '#D2691E')">
+                Catan<br>
+                <small>Click to generate</small>
+            </div>
+            <div class="game-card ticket" onclick="generateImage('Ticket to Ride', '#4169E1', '#1E90FF')">
+                Ticket to Ride<br>
+                <small>Click to generate</small>
+            </div>
+            <div class="game-card pandemic" onclick="generateImage('Pandemic', '#DC143C', '#FF4500')">
+                Pandemic<br>
+                <small>Click to generate</small>
+            </div>
+            <div class="game-card carcassonne" onclick="generateImage('Carcassonne', '#228B22', '#32CD32')">
+                Carcassonne<br>
+                <small>Click to generate</small>
+            </div>
+            <div class="game-card settlers" onclick="generateImage('Settlers of Catan', '#DAA520', '#FFD700')">
+                Settlers of Catan<br>
+                <small>Click to generate</small>
+            </div>
+            <div class="game-card legacy" onclick="generateImage('Pandemic Legacy', '#4B0082', '#8A2BE2')">
+                Pandemic Legacy<br>
+                <small>Click to generate</small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateImage(title, color1, color2) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 300;
+            canvas.height = 200;
+            const ctx = canvas.getContext('2d');
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 300, 200);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 300, 200);
+
+            // Add grid pattern
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 300; i += 20) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, 200);
+                ctx.stroke();
+            }
+            for (let i = 0; i < 200; i += 20) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(300, i);
+                ctx.stroke();
+            }
+
+            // Add title
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(title, 150, 100);
+
+            // Add subtitle
+            ctx.font = '14px Arial';
+            ctx.fillText('Board Game', 150, 130);
+
+            // Add decorative elements
+            ctx.font = '20px Arial';
+            ctx.fillText('🎲', 50, 50);
+            ctx.fillText('🎮', 250, 50);
+            ctx.fillText('🏆', 50, 150);
+            ctx.fillText('🎯', 250, 150);
+
+            // Display the image
+            const container = document.getElementById('canvas-container');
+            container.innerHTML = '';
+
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL('image/jpeg', 0.9);
+            img.style.width = '300px';
+            img.style.height = '200px';
+            img.style.borderRadius = '10px';
+            img.style.margin = '20px';
+            img.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+
+            container.appendChild(img);
+
+            // Add download button
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.textContent = `Download ${title} Image`;
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `${title.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 0.9);
+                link.click();
+            };
+            container.appendChild(downloadBtn);
+        }
+    </script>
+</body>
+
+</html>
