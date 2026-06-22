@@ -60,7 +60,7 @@ const games = [
         description: "Certi amori fanno solo giri immensi, come Citadels, un gioco dove si dovrà costruire quartieri della propria città con l'aiuto di vari personaggi. Lo avevamo giocato per la prima volta 10 anni fa, con una copia di un amico, e il matrimonio è stata la scusa perfetta per aggiungerlo alla collezione e tornare a giocarci.",
         cardDescription: "Costruite quartieri della vostra città scegliendo personaggi con abilità uniche ogni turno.",
         duration: "60 min",
-        youtubeUrl: "https://youtu.be/tyb1Lo3Skxk",
+        youtubeUrl: "https://www.youtube.com/embed/tyb1Lo3Skxk",
         image: "images/citadels.jpg",
         players: "2-8",
         category: "Strategia"
