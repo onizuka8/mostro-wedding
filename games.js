@@ -24,7 +24,7 @@ const games = [
     {
         id: 3,
         title: "Landmarks",
-        description: "Un gioco cooperativo dove un caposquadra cerca di far indovinare un percorso su una mappa segreta usando le parole per associazione di idee, è possibile anche giocarlo in versione a squadre. Lo abbiamo comprato con la scusa che poteva srvire per il matrimonio... un anno fa!",
+        description: "Un gioco cooperativo dove un caposquadra cerca di far indovinare un percorso su una mappa segreta usando le parole per associazione di idee, è possibile anche giocarlo in versione a squadre. Lo abbiamo comprato con la scusa che poteva servire per il matrimonio... un anno fa!",
         cardDescription: "Un caposquadra guida il gruppo su una mappa segreta con indizi ad associazione di idee, anche in versione a squadre.",
         duration: "25 min",
         youtubeUrl: "https://www.youtube.com/embed/5ZXgYY0ZHrw",
@@ -68,7 +68,7 @@ const games = [
     {
         id: 7,
         title: "Decrypto",
-        description: "Un gioco cgeniale che ribalta gli schemi classici dei giochi di parole, ovvero si dovrà dare indizi su parole già conosciute dalla propria squadra, ma si dovrà essere non troppo ovvi per il rischio di essere scoperti dagli avversari. Impazziamo sempre quando dobbiamo provare a spiegarlo, tant'è che spesso facciamo fare un turno di prova così si capisce tutto subito. Praticamente si impara giocando",
+        description: "Un gioco geniale che ribalta gli schemi classici dei giochi di parole, ovvero si dovrà dare indizi su parole già conosciute dalla propria squadra, ma si dovrà essere non troppo ovvi per il rischio di essere scoperti dagli avversari. Impazziamo sempre quando dobbiamo provare a spiegarlo, tant'è che spesso facciamo fare un turno di prova così si capisce tutto subito. Praticamente si impara giocando",
         cardDescription: "Date indizi sulle parole della vostra squadra senza essere troppo ovvi, mentre gli avversari cercano di intercettarvi.",
         duration: "30 min",
         youtubeUrl: "https://www.youtube.com/embed/qk7pwbQb8CE",
