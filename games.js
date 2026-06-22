@@ -8,7 +8,7 @@ const games = [
         youtubeUrl: "https://www.youtube.com/embed/PuwoNmaemmc",
         image: "images/just-one.jpg",
         players: "3-7",
-        category: "Gioco di gruppo"
+        category: "party game"
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const games = [
         youtubeUrl: "https://www.youtube.com/embed/wOls21pm4zw",
         image: "images/nome-in-codice.webp",
         players: "4+",
-        category: "Gioco di gruppo"
+        category: "party game"
     },
     {
         id: 3,
@@ -41,7 +41,7 @@ const games = [
         youtubeUrl: "https://www.youtube.com/embed/SdSLX_hZumA",
         image: "images/parola-per-parola.jpg",
         players: "2-12",
-        category: "Gioco di gruppo"
+        category: "party game"
     },
     {
         id: 5,
@@ -74,7 +74,7 @@ const games = [
         youtubeUrl: "https://www.youtube.com/embed/qk7pwbQb8CE",
         image: "images/decrypto.jpg",
         players: "4+",
-        category: "Gioco di gruppo"
+        category: "party game"
     },
     {
         id: 8,
@@ -85,6 +85,6 @@ const games = [
         youtubeUrl: "https://www.youtube.com/embed/yWYD_QQsu0k",
         image: "images/brick-like-this.jpg",
         players: "2-8",
-        category: "Gioco di gruppo"
+        category: "party game"
     }
 ];

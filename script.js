@@ -50,10 +50,8 @@ function createGameCard(game) {
             <p class="game-description">${game.cardDescription || game.description}</p>
             <div class="game-meta">
                 <span>⏱️ ${game.duration}</span>
-                <span>👥 ${game.players} giocatori</span>
-            </div>
-            <div class="game-category">
-                <span class="category-tag">${game.category}</span>
+                <span>👥 ${game.players}</span>
+                <span>🎲 ${game.category}</span>
             </div>
             <button class="play-button" onclick="event.stopPropagation(); goToTutorial(${JSON.stringify(game).replace(/"/g, '&quot;')})">
                 <i class="fas fa-play"></i>
